@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import MapContainer from './MapContainer';
-import { LocationList } from './LocationList';
-import { SearchBar } from './SearchBar';
+import LocationList from './LocationList';
+import SearchBar from './SearchBar';
 
 const LOCATIONS = [
   { name: "The Royal Palace", position: {lat: 59.326824, lng: 18.071720} },

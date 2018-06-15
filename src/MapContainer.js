@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
-
+import { Map, Marker, GoogleApiWrapper } from 'google-maps-react'
 
 const GAMLA_STAN_POS = {
   center: {lat: 59.325027, lng: 18.070802},
@@ -50,5 +48,5 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyC36F_wsicCtp-z6Ci06ZWYrSmRIu4Wj9c'
+  apiKey: process.env.REACT_APP_GOOGLE_API_KEY
 })(MapContainer)

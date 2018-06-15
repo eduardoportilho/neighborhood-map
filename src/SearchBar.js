@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class SearchBar extends Component {
+export default class SearchBar extends Component {
   handleSearchChange = (event) => {
     const { onChange } = this.props
     const query = event.target.value
