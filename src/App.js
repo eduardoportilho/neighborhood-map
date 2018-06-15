@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import { GoogleApiWrapper } from 'google-maps-react';
 import MapContainer from './MapContainer';
 import { LocationList } from './LocationList';
 import { SearchBar } from './SearchBar';
@@ -14,7 +13,7 @@ const LOCATIONS = [
   { name: "Moderna Museet", position: {lat: 59.326071, lng: 18.084705} },
 ]
 
-export class App extends Component {
+export default class App extends Component {
   state = {
     locations: LOCATIONS
   }
@@ -33,14 +32,10 @@ export class App extends Component {
     const { locations } = this.state 
     return (
       <main>
-        <MapContainer google={this.props.google} locations={locations} />
+        <MapContainer locations={locations} />
         <SearchBar onChange={this.handleSearchChange} />
         <LocationList locations={locations} />
       </main>
     );
   }
 }
-
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyC36F_wsicCtp-z6Ci06ZWYrSmRIu4Wj9c'
-})(App);

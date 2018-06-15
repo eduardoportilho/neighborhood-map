@@ -6,14 +6,18 @@ export class LocationList extends Component {
     return (
       <div>
         <table>
-          <tr>
-            <th>Name</th>
-          </tr>
-          {locations.map(location => (
+          <thead>
             <tr>
-              <td>{location.name}</td>
+              <th>Name</th>
             </tr>
-          ))}
+          </thead>
+          <tbody>
+            {locations.map((location, i) => (
+              <tr key={i}>
+                <td>{location.name}</td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     );
