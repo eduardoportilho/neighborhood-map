@@ -17,10 +17,12 @@ html, body {
   order: 1;
   margin: 0;
   padding: 0;
+  min-width: 160px;
 }
 
-.logo {
-  margin: 6px 10px;
+.sidebar h2 {
+  font-size: 16px;
+  margin: 10px;
 }
 
 .sidebar-entry {
@@ -51,9 +53,24 @@ html, body {
 
 .header {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
   padding: 10px;
   margin: 0;
+  border-bottom: 1px solid grey;
+}
+
+.logo {
+  margin: 0 10px;
+  font-size: 20px;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.search-field {
+  border: 1px solid gray;
 }
 
 .search-label {
@@ -69,4 +86,19 @@ html, body {
   background-color: white;
   padding: 10px;
   border: 1px solid grey;
+  z-index: 999;
+}
+
+/* Tablet & smaller */
+@media screen and (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+  .header {
+    flex-direction: column;
+  }
+
+  .location-info {
+    position: static;
+  }
 }

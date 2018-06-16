@@ -12,7 +12,7 @@ export default class SideBar extends Component {
     const { selectedLocation, locations } = this.props
     return (
       <section className="sidebar">
-        <h1 className="logo">Neighborhood Map</h1>
+        <h2>Locations</h2>
         {locations.map((location, i) => {
           const className = location === selectedLocation ? 'sidebar-entry selected' : 'sidebar-entry'
           return (

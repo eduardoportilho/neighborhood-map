@@ -40,15 +40,17 @@ export default class App extends Component {
   render() {
     const { locations, selectedLocation } = this.state 
     return (
+      <div className="app">
+        <Header onChange={this.onSearchChange} />
       <div className="wrapper">
         <SideBar {...{locations, selectedLocation}} onLocationSelected={this.onLocationSelected} />
         <div className="content">
-          <Header onChange={this.onSearchChange} />
+          {selectedLocation && (
+            <LocationInfo location={selectedLocation} />
+          )}
           <MapContainer {...{locations, selectedLocation}} onLocationSelected={this.onLocationSelected}/>
         </div>
-        {selectedLocation && (
-          <LocationInfo location={selectedLocation} />
-        )}
+        </div>
       </div>
     );
   }
