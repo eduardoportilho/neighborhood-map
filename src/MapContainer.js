@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Map, Marker, InfoWindow, GoogleApiWrapper } from 'google-maps-react'
+import { Map, Marker, GoogleApiWrapper } from 'google-maps-react'
 
 const GAMLA_STAN_POS = {
   center: {lat: 59.325027, lng: 18.070802},

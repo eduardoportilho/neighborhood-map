@@ -12,9 +12,8 @@ export default class Header extends Component {
     return (
       <header className="header">
         <h1 className="logo">Neighborhood Map</h1>
-        <div className="spacer"></div>
-        <div className="search-label">Filter:</div>
-        <input className="search-field" type="text" onChange={this.handleSearchChange} />
+        <label className="search-label" htmlFor="search-field">Filter:</label>
+        <input id="search-field" className="search-field" type="text" role="search" onChange={this.handleSearchChange} />
       </header>
     )
   }

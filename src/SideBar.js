@@ -13,14 +13,18 @@ export default class SideBar extends Component {
     return (
       <section className="sidebar">
         <h2>Locations</h2>
+        <ul aria-label="Location list">
         {locations.map((location, i) => {
           const className = location === selectedLocation ? 'sidebar-entry selected' : 'sidebar-entry'
           return (
-            <div key={i} className={className} onClick={this.onLocationClick(location)}>
-              <h3>{location.name}</h3>
-            </div>
+            <li key={i} className={className}>
+              <a href="#" onClick={this.onLocationClick(location)}>
+                <h3>{location.name}</h3>
+              </a>
+            </li>
           )
         })}
+        </ul>
       </section>
     )
   }
