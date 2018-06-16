@@ -24,8 +24,6 @@ export class MapContainer extends Component {
 
   render() {
     const { google, selectedLocation, onLocationSelected } = this.props
-    const showingInfoWindow = !!selectedLocation
-
     return (
         <Map 
           google={this.props.google} 
@@ -36,6 +34,17 @@ export class MapContainer extends Component {
           className="map"
         >
           {this.props.locations.map((location, i) => {
+            const label = selectedLocation === location ? {
+              text: location.name,
+              fontSize: '16px',
+              fontWeight: 'bold',
+              color: 'darkred',
+            } : {
+              text: location.name,
+              fontSize: '14px',
+              fontWeight: 'normal',
+              color: 'darkred',
+            }
             return (
                 <Marker
                   key={i}
@@ -46,23 +55,11 @@ export class MapContainer extends Component {
                     scaledSize: new google.maps.Size(32, 32),
                     labelOrigin: new google.maps.Point(12, -10),
                   }}
-                  label={{
-                    text: location.name,
-                    color: 'darkred',
-                  }}
+                  label={label}
                   position={location.position}
                 />
             )
           })}
-
-          <InfoWindow
-            position={selectedLocation && selectedLocation.position}
-            onClose={this.onInfoWindowClose}
-            visible={showingInfoWindow}>
-            <div>
-              <h1>{selectedLocation && selectedLocation.name}</h1>
-            </div>
-          </InfoWindow>
 
         </Map>
     )

@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 
-export default class SurroundingBusiness extends Component {
+export default class LocationInfo extends Component {
   state = {
     loading: true,
     error: undefined,
     surroundingBusiness: [],
   }
 
+  componentDidUpdate = async (prevProps) => {
+    if (prevProps.location !== this.props.location) {
+      this.getData()
+    }
+  }
+
   componentDidMount = async () => {
+    this.getData()
+  }
+
+  getData = async () => {
     const { location: { position: { lat, lng }}} = this.props
     
     const clientId = process.env.REACT_APP_FOURSQUARE_CLIENT_ID
@@ -36,6 +46,7 @@ export default class SurroundingBusiness extends Component {
   }
 
   render() {
+    const { location: { name } } = this.props
     const { loading, error, surroundingBusiness } = this.state
     let content
     if (loading) {
@@ -46,7 +57,12 @@ export default class SurroundingBusiness extends Component {
       content = (
         <ul>
           {surroundingBusiness.map((biz, i) => (
-            <li key={i}>{biz.name} at {biz.location.address}</li>
+            <li key={i}>
+              {biz.name} 
+              {biz.location.address && (
+                <span> at {biz.location.address}</span>
+              )}
+            </li>
           ))}
         </ul>
       )
@@ -57,9 +73,10 @@ export default class SurroundingBusiness extends Component {
     }
 
     return (
-      <div>
-      <h3>Surrounding Business</h3>
-      { content }
+      <div className="location-info">
+        <h3>{name}</h3>
+        <h4>Surronding Business</h4>
+        { content }
       </div>
     )
   }

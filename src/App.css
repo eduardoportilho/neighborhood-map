@@ -61,3 +61,12 @@ html, body {
   font-weight: normal;
   margin: 0 10px;
 }
+
+.location-info {
+  position: absolute;
+  right: 0;
+  top: 39px;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid grey;
+}

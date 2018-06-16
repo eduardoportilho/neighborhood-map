@@ -3,6 +3,7 @@ import './App.css';
 import MapContainer from './MapContainer';
 import SideBar from './SideBar';
 import Header from './Header';
+import LocationInfo from './LocationInfo';
 
 const LOCATIONS = [
   { name: "The Royal Palace", position: {lat: 59.326824, lng: 18.071720} },
@@ -21,6 +22,7 @@ export default class App extends Component {
 
   onSearchChange = (query) => {
     this.setState({
+      selectedLocation: undefined,
       locations: LOCATIONS.filter((location) => {
         return location.name
           .toLowerCase()
@@ -44,6 +46,9 @@ export default class App extends Component {
           <Header onChange={this.onSearchChange} />
           <MapContainer {...{locations, selectedLocation}} onLocationSelected={this.onLocationSelected}/>
         </div>
+        {selectedLocation && (
+          <LocationInfo location={selectedLocation} />
+        )}
       </div>
     );
   }
