@@ -9,19 +9,14 @@ const GAMLA_STAN_POS = {
 export class MapContainer extends Component {
   render() {
     const { google } = this.props
-    const style = {
-      width: '100vw',
-      height: '75vh',
-      position: 'relative',
-    }
 
     return (
-      <div {...{style}}>
         <Map 
           google={this.props.google} 
           zoom={GAMLA_STAN_POS.zoom}
           initialCenter={GAMLA_STAN_POS.center}
-          { ...{style}}
+          style={{ height: '100%', position: 'relative', width: '100%' }}
+          className="map"
         >
           {this.props.locations.map((location, i) => {
             return (
@@ -42,7 +37,6 @@ export class MapContainer extends Component {
             )
           })}
         </Map>
-      </div>
     )
   }
 }

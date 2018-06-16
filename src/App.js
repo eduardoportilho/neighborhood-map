@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import MapContainer from './MapContainer';
-import LocationList from './LocationList';
-import SearchBar from './SearchBar';
+import SideBar from './SideBar';
+import Header from './Header';
 
 const LOCATIONS = [
   { name: "The Royal Palace", position: {lat: 59.326824, lng: 18.071720} },
@@ -31,11 +31,13 @@ export default class App extends Component {
   render() {
     const { locations } = this.state 
     return (
-      <main>
-        <MapContainer locations={locations} />
-        <SearchBar onChange={this.handleSearchChange} />
-        <LocationList locations={locations} />
-      </main>
+      <div className="wrapper">
+        <SideBar locations={locations} />
+        <div className="content">
+          <Header onChange={this.handleSearchChange} />
+          <MapContainer locations={locations} />
+        </div>
+      </div>
     );
   }
 }

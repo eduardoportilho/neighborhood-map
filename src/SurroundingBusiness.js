@@ -45,8 +45,8 @@ export default class SurroundingBusiness extends Component {
     } else {
       content = (
         <ul>
-          {surroundingBusiness.map(biz => (
-            <li>{biz.name} at {biz.location.address}</li>
+          {surroundingBusiness.map((biz, i) => (
+            <li key={i}>{biz.name} at {biz.location.address}</li>
           ))}
         </ul>
       )
