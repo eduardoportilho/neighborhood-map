@@ -15,10 +15,11 @@ const LOCATIONS = [
 
 export default class App extends Component {
   state = {
-    locations: LOCATIONS
+    locations: LOCATIONS,
+    selectedLocation: undefined,
   }
 
-  handleSearchChange = (query) => {
+  onSearchChange = (query) => {
     this.setState({
       locations: LOCATIONS.filter((location) => {
         return location.name
@@ -28,14 +29,20 @@ export default class App extends Component {
     })
   }
 
+  onLocationSelected = (selectedLocation) => {
+    this.setState({
+      selectedLocation
+    })
+  }
+
   render() {
-    const { locations } = this.state 
+    const { locations, selectedLocation } = this.state 
     return (
       <div className="wrapper">
-        <SideBar locations={locations} />
+        <SideBar {...{locations, selectedLocation}} onLocationSelected={this.onLocationSelected} />
         <div className="content">
-          <Header onChange={this.handleSearchChange} />
-          <MapContainer locations={locations} />
+          <Header onChange={this.onSearchChange} />
+          <MapContainer {...{locations, selectedLocation}} onLocationSelected={this.onLocationSelected}/>
         </div>
       </div>
     );
